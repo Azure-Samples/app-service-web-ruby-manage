@@ -1,10 +1,7 @@
-# app-service-web-ruby-manage
-This sample demonstrates how to manage your WebApps using the Ruby SDK
-## Running this sample
-Coming soon...
-## Deploy this sample to Azure
-Coming soon...
-## About the code
-Coming soon...
-## More information
-Coming soon...
+---
+services: app-service
+platforms: ruby
+author: allclark
+---
+
+## TODO: Add Readme
