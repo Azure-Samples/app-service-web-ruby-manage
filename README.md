@@ -1,7 +1,7 @@
 ---
 services: app-service
 platforms: ruby
-author: allclark
+author: devigned
 ---
 
 # Manage Azure websites with Ruby
