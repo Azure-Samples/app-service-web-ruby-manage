@@ -6,12 +6,12 @@ author: devigned
 
 # Manage Azure websites with Ruby
 
-This sample demonstrates how to manage your Azure websites using a node.js client.
+This sample demonstrates how to manage your Azure websites using a ruby client.
 
 **On this page**
 
 - [Run this sample](#run)
-- [What does index.js do?](#sample)
+- [What does example.rb do?](#sample)
     - [Create a server farm](#create-server-farm)
     - [Create a website](#create-website)
     - [List websites](#list-websites)
