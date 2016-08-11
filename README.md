@@ -151,4 +151,4 @@ resource_client.resource_groups.delete(GROUP_NAME)
 
 
 ## More information
-Please refer to [Azure SDK for Node](https://github.com/Azure/azure-sdk-for-node) for more information.
+Please refer to [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby) for more information.
