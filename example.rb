@@ -66,9 +66,7 @@ def run_example
   puts 'Create a Site to be hosted in the Server Farm'
   site_params = Azure::ARM::Web::Models::Site.new.tap do |site|
     site.location = WEST_US
-    site.properties = Azure::ARM::Web::Models::SiteProperties.new.tap do |props|
-      props.server_farm_id
-    end
+    site.server_farm_id = SERVER_FARM_NAME
   end
   print_item web_client.sites.create_or_update_site(GROUP_NAME, SITE_NAME, site_params)
 
@@ -85,7 +83,7 @@ def run_example
   site = web_client.sites.get_site(GROUP_NAME, SITE_NAME)
   print_item site
 
-  puts "Your site and server farm have been created. You can now go and visit at http://#{site.default_host_name}./nPress enter to delete the site and server farm."
+  puts "Your site and server farm have been created. You can now go and visit at 'http://#{site.default_host_name}'.\nPress enter to delete the site and server farm."
   gets
 
   #
@@ -102,18 +100,21 @@ def run_example
 
 end
 
-def print_item(group)
-  puts "\tName: #{group.name}"
-  puts "\tId: #{group.id}"
-  puts "\tLocation: #{group.location}"
-  puts "\tTags: #{group.tags}"
-  print_properties(group.properties)
+def print_item(resource)
+  puts "\tName: #{resource.name}"
+  puts "\tId: #{resource.id}"
+  puts "\tLocation: #{resource.location}"
+  puts "\tTags: #{resource.tags}"
+  print_properties(resource)
 end
 
-def print_properties(props)
-  if props.respond_to? :provisioning_state
-    puts "\tProperties:"
-    puts "\t\tProvisioning State: #{props.provisioning_state}"
+def print_properties(resource)
+  puts "\tProperties:"
+  resource.instance_variables.sort.each do |ivar|
+    str = ivar.to_s.gsub /^@/, ''
+    if resource.respond_to? str.to_sym
+      puts "\t\t#{str}: #{resource.send(str.to_sym)}"
+    end
   end
   puts "\n\n"
 end
